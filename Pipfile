@@ -1,0 +1,16 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+logzero = '*'
+psycopg2-binary = "*"
+sh = "*"
+
+[dev-packages]
+pylint = '*'
+isort = '*'
+
+[requires]
+python_version = "3.10"
