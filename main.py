@@ -95,7 +95,7 @@ def get_connection_string(**kargs):
     return result
 
 
-def create_pgsql_flags(prefix, p):
+def create_psql_flags(prefix, p):
     p.add_argument(
         f"--{prefix}-host",
         action="store",
@@ -142,7 +142,7 @@ def main(opts):
             )
             tables = get_tables_wo_pk(source_cs)
             logger.info(f"Found {len(tables)} tables without "
-                        f"Primary Key on database {database}")
+                        f"Primary Key on database {database}: {tables}")
             for table in tables:
                 file = f'{TMP_WORKDIR}/{table}.sql'
                 dump_table(source_cs, table, file)
@@ -154,8 +154,8 @@ def main(opts):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    create_pgsql_flags("source", parser)
-    create_pgsql_flags("target", parser)
+    create_psql_flags("source", parser)
+    create_psql_flags("target", parser)
     parser.add_argument(
         "--databases",
         action="store",
