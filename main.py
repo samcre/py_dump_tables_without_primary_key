@@ -67,8 +67,8 @@ def restore_table(connection_string, table, file=None):
         logger.info(f'Restoring table {table} on target database…')
         with open(file) as f:
             psql(
-                 "-d", connection_string,
-                 f"--command=TRUNCATE TABLE {table};",)
+                "-d", connection_string,
+                f"--command=TRUNCATE TABLE {table};",)
             psql(
                 "-d", connection_string,
                 "-f", file
